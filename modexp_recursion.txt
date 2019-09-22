@@ -1,0 +1,50 @@
+#include<stdio.h>
+
+int exponent(int a, int b, int c){
+ 
+    long y;
+
+     if (a == 0)
+ 
+        return 0;
+ 
+    if (b == 0)
+ 
+        return 1;
+
+     if (b % 2 == 0) {
+ 
+        y = exponent(a, b / 2, c);
+ 
+        y = (y * y) % c;
+ 
+    }
+ 
+    else {
+ 
+        y = a % c;
+ 
+        y = (y * exponent(a, b - 1, c) % c) % c;
+ 
+    }
+ 
+    return (int)((y + c) % c);
+
+}
+
+int main() 
+{
+  
+   int a,b,c;
+  
+   scanf("%d",&a);
+
+     scanf("%d",&b);
+
+     scanf("%d",&c);
+ 
+     printf("remainder %d", exponent(a, b, c));
+  
+   return 0;
+
+} 

@@ -1,0 +1,51 @@
+#include<stdio.h>
+
+int dup(int a[],int n);
+
+int main()
+{
+
+    int n,i,x,a[30];
+
+    scanf("%d",&n);
+
+    for(i=0;i<n;i++)
+
+    {
+
+        scanf("%d",&a[i]);
+
+    }
+
+    x=dup(a,n);
+
+    printf("%d",x);
+
+}
+
+int dup(int a[],int n)
+{
+
+    int i,j;
+
+    for(i=0;i<n;i++)
+
+    {
+
+        for(j=i+1;j<n;j++)
+
+        {
+
+            if(a[i]==a[j])
+
+            {
+
+                return a[i];
+
+            }
+ 
+        }
+
+    }
+
+}

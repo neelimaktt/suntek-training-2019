@@ -1,0 +1,21 @@
+#include<stdio.h>
+
+int main(){
+ 
+    int b,p,result=1,i;
+
+    scanf("%d",&b);
+
+    scanf("%d",&p);
+
+    for(i = 0;i<p;i++){
+
+        result = result * b;
+
+    }
+
+    printf("%d^%d = %d\n",b,p,result);
+
+    return 0;
+
+}

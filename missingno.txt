@@ -1,0 +1,51 @@
+#include <stdio.h> 
+#include <stdlib.h> 
+void swap(int* a, int* b) 
+{ 
+    int temp; 
+    temp = *a; 
+    *a = *b; 
+    *b = temp; 
+} 
+int segregate(int arr[], int n) 
+{ 
+    int j = 0, i; 
+    for (i = 0; i < n; i++) { 
+        if (arr[i] <= 0) { 
+            swap(&arr[i], &arr[j]); 
+            j++; 
+        } 
+    } 
+    return j; 
+} 
+int findMissingPositive(int arr[], int n) 
+{ 
+    int i; 
+    for (i = 0; i < n; i++) { 
+        if (abs(arr[i]) - 1 < n && arr[abs(arr[i]) - 1] > 0) 
+            arr[abs(arr[i]) - 1] = -arr[abs(arr[i]) - 1]; 
+    } 
+    for (i = 0; i < n; i++) 
+        if (arr[i] > 0) 
+            return i + 1; 
+    return n + 1; 
+} 
+int findMissing(int arr[], int n) 
+{ 
+    int shift = segregate(arr, n); 
+    return findMissingPositive(arr + shift, n - shift); 
+} 
+  
+int main() 
+{ 
+    int arr[30],n,i;
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    int missing = findMissing(arr, n); 
+    printf("The smallest positive missing number is %d ", missing); 
+    getchar(); 
+    return 0; 
+} 

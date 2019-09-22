@@ -1,0 +1,45 @@
+#include<stdio.h>
+
+int maxSubArraySum(int a[], int n) 
+{
+ 
+    int max = 0, max_end = 0,i;
+ 
+    for (i = 0; i < n; i++)
+ 
+    {
+ 
+        max_end = max_end + a[i];
+ 
+        if (max < max_end)
+ 
+            max = max_end;
+ 
+        if (max_end < 0)
+ 
+            max_end = 0;
+ 
+    }
+ 
+    return max;
+
+}
+
+int main()
+{
+  
+    int a[30],n,i,maxsum;
+
+      scanf("%d",&n);
+
+      for(i=0;i<n;i++)
+ 
+        scanf("%d",&a[i]);
+  
+    maxsum = maxSubArraySum(a, n);
+  
+    printf("Maximum sum is %d ",maxsum);
+ 
+     return 0;
+
+} 
